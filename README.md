@@ -13,5 +13,5 @@
 #### 1
 ![Loop and ASCII ART](https://yixinc17.github.io/HSCI-234/assignment1/)
 #### 2
-![P5.js in python: draw a rabit](https://yixinc17.github.io/HSCI-234/assignment2/)
+![P5.js in python: draw a rabit](https://yixinc17.github.io/HSCI-234/assignment1/)
 
