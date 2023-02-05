@@ -9,9 +9,9 @@
 ![p5 lib](https://p5.readthedocs.io/en/latest/)
 
 
-###Assignment
-####1
+### Assignment
+#### 1
 ![Loop and ASCII ART](https://yixinc17.github.io/HSCI-234/assignment1/)
-####2
+#### 1
 ![P5.js in python: draw a rabit](https://yixinc17.github.io/HSCI-234/assignment2/)
 
