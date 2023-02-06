@@ -4,10 +4,11 @@
 
 Ascii art: https://www.tetoki.eu/asciiart/
 
-##### P5 library for python
+##### P5.js resourses
 
 p5 lib: https://p5.readthedocs.io/en/latest/
 
+p5.js generated arts: http://www.generative-gestaltung.de/2/
 
 ### Assignment
 #### 1
