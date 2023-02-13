@@ -12,8 +12,8 @@ p5.js generated arts: http://www.generative-gestaltung.de/2/
 
 ### Assignment
 #### 1
-https://yixinc17.github.io/HSCI-234/assignment1/ 
+[ASCII ART](https://yixinc17.github.io/HSCI-234/assignment1/)
 #### 2
-https://yixinc17.github.io/HSCI-234/assignment2/
+[Rabbit](https://yixinc17.github.io/HSCI-234/assignment2/)
 #### 3
-https://yixinc17.github.io/HSCI-234/assignment3/
+[Self Portrait](https://yixinc17.github.io/HSCI-234/assignment3/)
