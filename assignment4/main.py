@@ -4,13 +4,13 @@ p5 = js.window
 ring_x = 100
 mid_y = 150
 index_x = 200
-def preload():
-    img = p5.loadImage('image/ring.png')
+# def preload():
+#     img = p5.loadImage('image/ring.png')
 
 def setup():
     p5.createCanvas(300, 300)   
     p5.rectMode(p5.CENTER)
-    p5.image(img,ring_x,150)
+    # p5.image(img,ring_x,150)
 
 
 
