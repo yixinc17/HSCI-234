@@ -16,7 +16,7 @@ def setup():
 
     
 def draw():
-    global ring_x, index_x, mid_y, img
+    global ring_x, index_x, mid_y
     if (p5.keyIsPressed):
         p5.fill(0,255,200)
         if (p5.key == 'a') or (p5.key == 'A'):  
