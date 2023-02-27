@@ -31,8 +31,14 @@ def lineto(x2, y2):
 def new_random_square():
     moveto(150,150)
     lineto(150,200)
-    moveto(200,150)
+    moveto(150,200)
     lineto(200,200)
+    moveto(200,200)
+    lineto(200,150)
+    moveto(200,150)
+    lineto(150,150)
+
+
 
 
 
