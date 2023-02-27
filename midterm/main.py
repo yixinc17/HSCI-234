@@ -140,6 +140,4 @@ def draw():
     inside_square(p5.mouseX,p5.mouseY)
 
 
-
-#havent finished yet
     new_random_square()

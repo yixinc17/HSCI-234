@@ -19,3 +19,5 @@ p5.js generated arts: http://www.generative-gestaltung.de/2/
 [Self Portrait](https://yixinc17.github.io/HSCI-234/assignment3/)
 #### 4
 [Game](https://yixinc17.github.io/HSCI-234/assignment4/)
+#### midterm
+[midterm](https://yixinc17.github.io/HSCI-234/midterm/)
