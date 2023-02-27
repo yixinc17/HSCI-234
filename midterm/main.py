@@ -15,19 +15,27 @@ color = ["#d9d7c5","#a8bda4","#a3c6d6","#c9a1a9"]
 
 def moveto(x1, y1):
     global startpointx, startpointy
-    startpointxx=x1
+    startpointx=x1
     startpointy=y1
     return startpointx, startpointy
 def lineto(x2, y2):
     global startpointx, startpointy, endpointx, endpointy
-    endpointxx=x2
+    endpointx=x2
     endpointy=y2
+    p5.stroke(0,0,255)
+    p5.strokeWeight(3)
     p5.line(startpointx, startpointy, endpointx, endpointy)
+
     
 #use moveto(x1, y1) and lineto(x2, y2) to draw
 def new_random_square():
-    moveto(10,10)
-    lineto(20,20)
+    moveto(150,150)
+    lineto(150,200)
+    moveto(200,150)
+    lineto(200,200)
+
+
+
 
 
 #3. Write a function definition random_square(size) to draw a random size square.
@@ -51,9 +59,10 @@ def random_square_at(x, y, size):
 
 
 
+
 # #10. Write a function definition inside_square that returns True if the cursor is inside a square.
 def inside_square(x,y):    
-    if(x>p5.width-10-random_size2/2 and x<p5.width-10+random_size2/2 and y>10-random_size2/2 and 10+random_size2/2):        
+    if(x>p5.width-10-random_size2/2 and x<p5.width-10+random_size2 and y>10-random_size2/2 and 10+random_size2/2):        
         p5.stroke(color[2])
         return True
     else:
