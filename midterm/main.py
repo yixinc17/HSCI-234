@@ -68,7 +68,7 @@ def random_square_at(x, y, size):
 
 # #10. Write a function definition inside_square that returns True if the cursor is inside a square.
 def inside_square(x,y):    
-    if(x>p5.width-10-random_size2/2 and x<p5.width-10+random_size2 and y>10-random_size2/2 and 10+random_size2/2):        
+    if(x>p5.width-10-random_size2/2) and (x<p5.width-10+random_size2) and (y>10-random_size2/2) and (y<10+random_size2/2):        
         p5.stroke(color[2])
         return True
     else:
