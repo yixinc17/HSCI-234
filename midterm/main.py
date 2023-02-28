@@ -12,7 +12,7 @@ endpointx=0
 endpointy=0
 color = ["#d9d7c5","#a8bda4","#a3c6d6","#c9a1a9"]
 
-
+#11. [Extra-credit] Write moveto(x, y) and lineto(x, y) functions to draw lines of a square.
 def moveto(x1, y1):
     global startpointx, startpointy
     startpointx=x1
@@ -23,7 +23,7 @@ def lineto(x2, y2):
     endpointx=x2
     endpointy=y2
     p5.stroke(0,0,255)
-    p5.strokeWeight(3)
+    p5.strokeWeight(1)
     p5.line(startpointx, startpointy, endpointx, endpointy)
 
     
@@ -76,8 +76,18 @@ def inside_square(x,y):
         return False
     random_square_at(p5.width-10, 10, random_size2)   
         
-
-
+#multiple squares
+def random_square_loop(x, y, size):
+    for i in range(4):
+        moveto(x-size/2,y-size/2)
+        lineto(x-size/2,y+size/2)
+        moveto(x-size/2,y+size/2)
+        lineto(x+size/2,y+size/2)
+        moveto(x+size/2,y+size/2)
+        lineto(x+size/2,y-size/2)
+        moveto(x+size/2,y-size/2)
+        lineto(x-size/2,y-size/2)
+        size-=4
 
 
 def setup():
@@ -141,3 +151,8 @@ def draw():
 
 
     new_random_square()
+    random_square_loop(150,150,40)
+
+
+
+
