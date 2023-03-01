@@ -36,13 +36,15 @@ def draw():
 
 
 def keyPressed(event):
-    global program_state
+    global program_state,program_timer
     if(p5.key=='1'):
         print('1')
         program_state = 'state1'
+        program_timer = p5.millis()
     elif(p5.key=='2'):
         print('2')
         program_state = 'state2'
+        program_timer = p5.millis()
     elif(p5.key=='3'):
         print('3')
         program_state = 'state3'
