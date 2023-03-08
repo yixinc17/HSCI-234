@@ -21,3 +21,7 @@ p5.js generated arts: http://www.generative-gestaltung.de/2/
 [Game](https://yixinc17.github.io/HSCI-234/assignment4/)
 #### midterm
 [midterm](https://yixinc17.github.io/HSCI-234/midterm/)
+#### 5
+[event](https://yixinc17.github.io/HSCI-234/assignment5/)
+#### 6
+[OOP](https://yixinc17.github.io/HSCI-234/assignment6/)
