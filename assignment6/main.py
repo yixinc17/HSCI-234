@@ -70,7 +70,7 @@ def draw():
 
     d=p5.dist(player1.x,player1.y,player2.x,player2.y)
     # print(d)
-    if(d<100):
+    if(d<80):
         p5.noStroke()
         p5.fill(255,0,0)
         p5.ellipse(150,150,50,50)
