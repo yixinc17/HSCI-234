@@ -25,3 +25,5 @@ p5.js generated arts: http://www.generative-gestaltung.de/2/
 [event](https://yixinc17.github.io/HSCI-234/assignment5/)
 #### 6
 [OOP](https://yixinc17.github.io/HSCI-234/assignment6/)
+#### 7
+[Final_1](https://yixinc17.github.io/HSCI-234/assignment7/)
