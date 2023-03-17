@@ -15,8 +15,7 @@ class Player:
         self.x=x
         self.y=y
         self.direction=0
-    def draw(self,l):
-        global c
+    def draw(self,l,c):
         m=l
         p5.push()
         p5.translate(self.x,self.y)
@@ -78,8 +77,8 @@ def draw():
     else:
         c=nail[0]#?????????????????????????????????????????????QUESTION:not sure why the color doesnt change
        
-    player1.draw(100)
-    player2.draw(80)   
+    player1.draw(100,c)
+    player2.draw(80,c)   
     player1.automove_random(0,300)      
 
 
