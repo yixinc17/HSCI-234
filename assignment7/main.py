@@ -10,13 +10,26 @@ d=0
 speed=10
 timer=0
 direction=0
-class Player:
+class Cursor:
+    def __init__(self,x=0,y=0):
+        self.x=x
+        self.y=y
+    def draw(self,x,y):
+        p5.fill(0)
+        p5.noStroke()
+        p5.push()
+        p5.translate(x-100,y)  
+        p5.rotate(p5.radians(-45))     
+        p5.triangle(150,150,145,160,155,160)
+        p5.rect(150,160,4,10)
+        p5.pop()
+class Finger:
     def __init__(self,x=0,y=0):
         self.x=x
         self.y=y
         self.direction=0
-    def draw(self,l):
-        global c
+        self.c=nail[0]
+    def draw(self,l,c):
         m=l
         p5.push()
         p5.translate(self.x,self.y)
@@ -55,9 +68,9 @@ class Player:
 
 
 
-
-player1=Player(10,150)
-player2=Player(150,150)
+cursor = Cursor(150,150)
+mid_l=Finger(10,150)
+index_l=Finger(150,150)
 def setup():
     p5.rectMode(p5.CENTER)
     p5.createCanvas(600, 600) 
@@ -68,19 +81,11 @@ def draw():
     global d, direction
     p5.background(45, 156, 150)            
 
-    d=p5.dist(player1.x,player1.y,player2.x,player2.y)
-    # print(d)
-    if(d<100):
-        p5.noStroke()
-        p5.fill(255,0,0)
-        p5.ellipse(150,150,50,50)
-        c=nail[1]
-    else:
-        c=nail[0]#?????????????????????????????????????????????QUESTION:not sure why the color doesnt change
-       
-    player1.draw(100)
-    player2.draw(80)   
-    player1.automove_random(0,300)      
+   
+    mid_l.draw(100,c)
+    index_l.draw(80,c)   
+    mid_l.automove_random(0,300)   
+    cursor.draw(p5.mouseX,p5.mouseY)
 
 
 #arrow button to change direction and position of player2
@@ -88,20 +93,20 @@ def keyPressed(event):
     global speed, direction
     if(p5.keyCode == p5.RIGHT_ARROW):
         n=speed
-        player2.direction=p5.PI/2
-        player2.move(n, 0)        
+        index_l.direction=p5.PI/2
+        index_l.move(n, 0)        
     elif(p5.keyCode == p5.LEFT_ARROW):
         n=-speed
-        player2.direction=-p5.PI/2
-        player2.move(n, 0)
+        index_l.direction=-p5.PI/2
+        index_l.move(n, 0)
     elif(p5.keyCode == p5.UP_ARROW):
         n=-speed
-        player2.direction=0
-        player2.move(0, n)    
+        index_l.direction=0
+        index_l.move(0, n)    
     elif(p5.keyCode == p5.DOWN_ARROW):
         n=speed
-        player2.direction=p5.PI
-        player2.move(0, n)    
+        index_l.direction=p5.PI
+        index_l.move(0, n)    
 
 
 def keyReleased(event):
@@ -109,6 +114,5 @@ def keyReleased(event):
 
 def mousePressed(event):
     pass
-
 def mouseReleased(event):
     pass
