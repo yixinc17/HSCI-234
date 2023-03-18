@@ -1,7 +1,6 @@
-#player1 randomly move per 0.5 sec
-#arrow to control player2, try to avoid colliding
-#when colliding, a red ball  appears
-#QUESTION:line79,the color of nail wont change as they collide
+# week1:
+#     create fingers,cursor,targets class
+#     AWSD to move
 import js
 p5 = js.window
 nail = ["#523818","#237bad"]
