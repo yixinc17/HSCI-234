@@ -156,13 +156,13 @@ def draw():
     cursor_target.draw(200,200)
     l_mid_target.draw(100)
     
+    print(l_ring.w)
 
-
-    if p5.keyIsPressed==True:
-        if p5.key == "A" or p5.key =="a":
-            l_ring.x-=1
-            if l_ring.x<=-l_ring.w/2:
-                l_ring.x= p5.width+l_ring.w/2
+    # if p5.keyIsPressed==True:
+    #     if p5.key == "A" or p5.key =="a":
+    #         l_ring.x-=1
+    #         if l_ring.x<=-l_ring.w/2:
+    #             l_ring.x= p5.width+l_ring.w/2
     #     elif(p5.keyCode == p5.LEFT_ARROW):
     #         spaceship.x-=1
     # if(spaceship.x<=-spaceship.img.width/2):
