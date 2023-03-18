@@ -26,5 +26,5 @@ p5.js generated arts: http://www.generative-gestaltung.de/2/
 #### 6
 [OOP](https://yixinc17.github.io/HSCI-234/assignment6/)
 #### 7
-[Final_1](https://yixinc17.github.io/HSCI-234/assignment7/)
+[Final_1](https://yixinc17.github.io/HSCI-234/assignment7/)</br>
 [Diagram](https://www.figma.com/file/owXfMgU2sJLu58nSwI50G0/Untitled?node-id=0%3A1&t=uCuBZoNVwzOv6aCN-1)
