@@ -5,10 +5,16 @@ import js
 p5 = js.window
 nail = ["#523818","#237bad"]
 c=nail[0]
-d=0
-speed=10
 timer=0
-direction=0
+# 3 main status of the game
+program_state = 'INTRO'
+# program_state = 'PLAY'
+# program_state = 'END'
+
+
+# fonts
+font_key = p5.loadFont('font/Monofett-Regular.ttf')
+font_num = p5.loadFont('font/digital-7.ttf')
 class Cursor:
     def __init__(self,x=0,y=0):
         self.x=x
@@ -145,7 +151,15 @@ def setup():
    
 def draw():
     global d, direction
-    p5.background(45, 156, 150)     
+    p5.background(45, 156, 150)   
+    p5.textFont(font_key) 
+    p5.fill(230)  
+    p5.textSize(40)
+    p5.text('AWSDawsd', 20, 40)
+    p5.textFont(font_num) 
+    p5.fill(46)  
+    p5.textSize(50)
+    p5.text('1234567890\'\"', 20, 80) 
 
     cursor_target.draw(200,200,cursor_target.c)
     l_mid_target.draw(100,18,l_mid_target.c)
@@ -191,7 +205,12 @@ def keyPressed(event):
 
 
 def keyReleased(event):
-    pass
+    global program_state
+    if program_state == 'INTRO' and p5.key ==" ":
+        program_state = 'PLAY'
+    elif (program_state == 'PLAY' or program_state == 'END') and p5.keyCode == p5.ESCAPE:
+        program_state = 'INTRO'
+    print('change program_state to ' + program_state)
 
 def mousePressed(event):
     pass
