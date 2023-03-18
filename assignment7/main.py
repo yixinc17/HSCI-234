@@ -27,9 +27,10 @@ class CursorTarget:
     def __init__(self,x=0,y=0):
         self.x=x
         self.y=y
-    def draw(self,x,y):
+        self.c=170
+    def draw(self,x,y,c):
         p5.noFill()
-        p5.stroke(170)
+        p5.stroke(c)
         p5.strokeWeight(2)
         p5.push()
         p5.translate(x+10,y)  
@@ -45,9 +46,11 @@ class Finger:
         self.direction=0
         self.c=nail[0]
         self.w=0
+        self.l=0
     def draw(self,l,w,c):
         x=w/4
         self.w=w
+        self.l=l
         p5.push()
         p5.translate(self.x,self.y)
         p5.rotate(self.direction)  
@@ -88,27 +91,30 @@ class FingerTarget:
         self.x=x
         self.y=y
         self.direction=0
-        self.c=nail[0]
-    def draw(self,l):
-        m=l
+        self.c=170
+        self.w=0
+        self.l=0
+    def draw(self,l,w,c):
+        x=w/4
+        self.w=w
+        self.l=l
+        p5.strokeWeight(2)
         p5.push()
         p5.translate(self.x,self.y)
-        p5.rotate(self.direction)
-        p5.strokeWeight(2)  
-        p5.stroke(170)
+        p5.rotate(self.direction)  
+        p5.stroke(c)
         p5.noFill()
-        p5.rect(0,0,20,m)
+        p5.rect(0,0,w,l)
         #finger tip
-        p5.ellipse(0,0-m/2,20,20)
-        p5.rect(0,0-m/2,15,10)
-        p5.ellipse(0,0-m/2-5,15,10)
-        #finger wrinkles
-        p5.strokeWeight(2)
-        p5.line(0-5,0-m/3+3,0+5,0-m/3+3)
-        p5.line(0-5,0-m/3,0+5,0-m/3)
-        p5.line(0-5,0,0+5,0)
-        p5.line(0-7,0+3,0+7,0+3)
-        p5.line(0-5,0+6,0+5,0+6)
+        p5.ellipse(0,0-l/2,w,w)
+        p5.rect(0,0-l/2,w/3*2,13)
+        p5.ellipse(0,0-l/2-5,w/3*2,10)
+        #finger wrinkles       
+        p5.line(0-x,0-l/3+3,0+x,0-l/3+3)
+        p5.line(0-x,0-l/3,0+x,0-l/3)
+        p5.line(0-x,0,0+x,0)
+        p5.line(-2-x,0+3,2+x,0+3)
+        p5.line(0-x,0+6,0+x,0+6)
         p5.pop()
 left_pos_y=500
 left_pos_x=100
@@ -140,8 +146,10 @@ def setup():
    
 def draw():
     global d, direction
-    p5.background(45, 156, 150)            
+    p5.background(45, 156, 150)     
 
+    cursor_target.draw(200,200,cursor_target.c)
+    l_mid_target.draw(100,18,l_mid_target.c)
 #draw hands   
     l_little.draw(50,14,c)
     l_ring.draw(80,16,c)
@@ -155,42 +163,32 @@ def draw():
     r_thumb.draw(30,20,c) 
 
     cursor.draw(p5.mouseX,p5.mouseY)
-    cursor_target.draw(200,200)
-    l_mid_target.draw(100)
+
     
 
-
-    # if p5.keyIsPressed==True:
-    #     if p5.key == "A" or p5.key =="a":
-    #         l_ring.x-=1
-    #         if l_ring.x<=-l_ring.w/2:
-    #             l_ring.x= p5.width+l_ring.w/2
-    #     elif(p5.keyCode == p5.LEFT_ARROW):
-    #         spaceship.x-=1
-    # if(spaceship.x<=-spaceship.img.width/2):
-    #     spaceship.x=p5.width+spaceship.img.width/2
-    # elif(spaceship.x>=p5.width+spaceship.img.width/2):
-    #     spaceship.x=-spaceship.img.width/2
+#AWSD to move left fingers
+    if p5.keyIsPressed==True:
+        if p5.key == "A" or p5.key =="a":
+            l_ring.x-=1
+            if l_ring.x<=-l_ring.w/2:
+                l_ring.x= p5.width+l_ring.w/2
+        if p5.key == "D" or p5.key =="d":
+            l_index.x+=1
+            if l_index.x>=p5.width+l_index.w/2:
+                l_index.x= -l_index.w/2
+        if p5.key == "W" or p5.key =="w":
+            l_mid.y-=1
+            if l_mid.y<=-l_mid.l/2:
+                l_mid.y= p5.height+l_mid.l/2
+        if p5.key == "S" or p5.key =="s":
+            l_mid.y+=1
+            if l_mid.y>=p5.height+l_mid.y/2:
+                l_mid.y= -l_mid.w/2
+ 
 
 #arrow button to change direction and position of player2
 def keyPressed(event):
-    global speed, direction
-    if(p5.keyCode == p5.RIGHT_ARROW):
-        n=speed
-        l_index.direction=p5.PI/2
-        l_index.move(n, 0)        
-    elif(p5.keyCode == p5.LEFT_ARROW):
-        n=-speed
-        l_index.direction=-p5.PI/2
-        l_index.move(n, 0)
-    elif(p5.keyCode == p5.UP_ARROW):
-        n=-speed
-        l_index.direction=0
-        l_index.move(0, n)    
-    elif(p5.keyCode == p5.DOWN_ARROW):
-        n=speed
-        l_index.direction=p5.PI
-        l_index.move(0, n)    
+    pass
 
 
 def keyReleased(event):
