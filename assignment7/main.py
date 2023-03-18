@@ -44,8 +44,10 @@ class Finger:
         self.y=y
         self.direction=0
         self.c=nail[0]
+        self.w=0
     def draw(self,l,w,c):
         x=w/4
+        self.w=w
         p5.push()
         p5.translate(self.x,self.y)
         p5.rotate(self.direction)  
@@ -156,7 +158,7 @@ def draw():
     cursor_target.draw(200,200)
     l_mid_target.draw(100)
     
-    print(l_ring.w)
+
 
     # if p5.keyIsPressed==True:
     #     if p5.key == "A" or p5.key =="a":
