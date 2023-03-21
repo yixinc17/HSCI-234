@@ -121,6 +121,21 @@ class FingerTarget:
         p5.line(-2-x,0+3,2+x,0+3)
         p5.line(0-x,0+6,0+x,0+6)
         p5.pop()
+class lHand:
+    def __init__(self,x=0,y=0):
+        self.x=x
+        self.y=y
+        self.little=Finger(self.x-40,self.y+20)
+        self.ring=Finger(self.x-20,self.y+10)
+        self.mid=Finger(self.x,self.y)
+        self.index=Finger(self.x+20,self.y+10)
+        self.thumb=Finger(self.x+50,self.y+30)
+    def draw(self):
+        self.little.draw(50,14,c)
+        self.ring.draw(80,16,c)
+        self.mid.draw(100,18,c)
+        self.index.draw(70,18,c)  
+        self.thumb.draw(30,20,c)  
 left_pos_y=500
 left_pos_x=100
 right_pos_y=500
@@ -142,6 +157,7 @@ r_thumb=Finger(right_pos_x-50,right_pos_y+30)
 
 
 l_mid_target=FingerTarget(100,100)
+lhand = lHand(150,150)
 
 def setup():
     p5.rectMode(p5.CENTER)
@@ -176,6 +192,7 @@ def draw():
     r_thumb.draw(30,20,c) 
 
     cursor.draw(p5.mouseX,p5.mouseY)
+    lhand.draw()
 
     
 
