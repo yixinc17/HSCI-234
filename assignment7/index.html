@@ -106,13 +106,21 @@
     
     <py-config type="toml">
         [[fetch]]
-        files = ["./main.py"]
+        files = [
+          "./main.py",
+          "./player.py",
+          "./timer.py",
+          "./hand.py",
+          "./target.py"
+          ]
+
     </py-config>
   
     <py-script id="output">
       from pyodide.ffi import create_proxy
       from main import *
       from js import localStorage
+
       
       def run(*args):
         draw()
