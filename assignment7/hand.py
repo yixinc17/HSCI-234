@@ -1,3 +1,8 @@
+# hand class: 
+# to integrate 5 fingers as a whole LeftHand
+# hand = LeftHand(x,y) or RightHand to create a new hand at position(x,y)[CENTER]
+# hand.draw() to draw
+
 from player import Finger
 import js
 p5 = js.window

@@ -1,3 +1,7 @@
+# Player class:
+# a parent class for all playerable elements: fingers and mouse-related(menu and cursor)
+# a shared function is is_match(target), to see if the player matches targets
+
 import js
 p5 = js.window
 # fonts
@@ -13,9 +17,9 @@ class Player:
         self.d = 0    
     def is_match(self,target):
         self.d = p5.dist(self.x , self.y , target.x, target.y)
-        if self.d < 5:
+        if self.d < 3:
             return True
-        
+#right click mouse: menu    
 class Menu(Player):
     def draw(self):
         p5.imageMode(p5.CORNER)
@@ -71,7 +75,7 @@ class Finger(Player):
         p5.line(-2-x,0+3,2+x,0+3)
         p5.line(0-x,0+6,0+x,0+6)
         p5.pop()
-
+    #when move fingers, related keys will appear under the fingers
     def press_key(self,key):
         p5.textAlign(p5.CENTER)
         p5.textFont(font_key) 

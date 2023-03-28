@@ -21,7 +21,7 @@
     # all function done without win state(including random targets every 5 sec, move fingers, mouse click to instantiate menu and cursor) 
     # first game test: 5 sec count down and specific position match is so difficult, so the timer will adjust to longer time, and instead of matching positions, use distance range.
     #  if cursor matches the target, it will turn green, but if others dont match their targets in 10 sec, the cursor will reset to black
-    #oh noooo 10sec is so hard too
+    # oh noooo 10sec is so hard too!!! timer = 20s, margins of error(d to target) < 5
 
 
 
@@ -42,7 +42,7 @@ bg = {
     'g':156, 
     'b':150
 }
-timer = 0
+timer_limit = 10
 
 # 3 main status of the game
 program_state = 'INTRO'
@@ -61,22 +61,19 @@ menu_list = []
 font_key = p5.loadFont('font/Monofett-Regular.ttf')
 font_num = p5.loadFont('font/digital-7.ttf')
 
-
-
-
-
+#intro elements
 intro_lhand = LeftHand(200,400)
 intro_rhand = RightHand(400,400)
-
-intro_cursor=Cursor(400,80)
+intro_cursor=Cursor(400,180)
+#play elements
 cursor = Cursor(0,0)
-cursor_target = CursorTarget(0,0)
-l_mid_target=FingerTarget(0,0,mid_l,mid_w)
-l_ring_target=FingerTarget(0,0,ring_l,ring_w)
-l_index_target=FingerTarget(0,0,index_l,index_w)
+cursor_target = CursorTarget(p5.random(100,500),p5.random(100,500))
+l_mid_target=FingerTarget(100,p5.random(100,500),mid_l,mid_w)
+l_ring_target=FingerTarget(p5.random(100,500),510,ring_l,ring_w)
+l_index_target=FingerTarget(p5.random(100,500),510,index_l,index_w)
 lhand = LeftHand(100,500)
 rhand = RightHand(500,500)
-timer = Timer(580,50,20,targets=[cursor_target, l_mid_target, l_ring_target, l_index_target])
+timer = Timer(580,50,timer_limit,targets=[cursor_target, l_mid_target, l_ring_target, l_index_target])
 
 
 
@@ -122,12 +119,15 @@ def draw():
 
     # play
     elif program_state =='PLAY':
-        
+        # draw 4 targets
         cursor_target.draw()
         l_mid_target.draw()
         l_ring_target.draw()
         l_index_target.draw()
+        # draw player cursor move with mouse
         cursor.follow()
+
+        # draw error cursor and menu controlled by mouse: ususally when you click right button, menu appears, and click left button, menu disappears.
         for i in range(len(menu_list)):
             newmenu = menu_list[i]
             newmenu.draw()
@@ -135,6 +135,7 @@ def draw():
             wrong_cursor = cursor_list[j]
             wrong_cursor.draw()
         
+        # if cursor matches the target, it will change to green
         if cursor_match:
             cursor.c = cursor_c[1]
         else:
@@ -163,25 +164,28 @@ def draw():
                 if lhand.mid.y>=p5.height+lhand.mid.y/2:
                     lhand.mid.y= -lhand.mid.w/2
         
+        # if fingers matches targets, their nails will change color
         if lhand.ring.is_match(l_ring_target):
             ring_match = True
             lhand.ring.c = nail[1]
         else:
+            ring_match = False
             lhand.ring.c = nail[0]
         if lhand.mid.is_match(l_mid_target):
             mid_match = True
             lhand.mid.c = nail[1]
         else:
+            mid_match = False
             lhand.mid.c = nail[0]
         if lhand.index.is_match(l_index_target):
             index_match = True
             lhand.index.c = nail[1]
         else:
+            index_match = False
             lhand.index.c = nail[0]
 
 
 
-        
         lhand.draw()
         rhand.draw()
         timer.update()
@@ -193,13 +197,27 @@ def draw():
             ring_match = False
             index_match = False
             cursor.c = cursor_c[0]
-
+        #if all matched, win
         if cursor_match == True and mid_match == True and ring_match == True and index_match ==True:
             program_state ='END'
         
     # end
-    elif program_state =='END':  
+    elif program_state =='END': 
+        p5.textAlign(p5.CENTER)
+        p5.textSize(50) 
         p5.text('WIN!!!', 300, 300)
+        p5.textSize(20)
+        if timer.round <3:
+            p5.text(f"Bravo! You passed with only {timer.round} round.", 300, 400)
+            p5.text("You must be the master of your fingers!", 300, 420)
+        elif timer.round>=3 and timer.round < 6:
+            p5.text(f"You passed with {timer.round} rounds.", 300, 400)
+            p5.text("Try to be friend with your fingers.", 300, 420)
+        elif timer.round>=6:
+            p5.text(f"I'm so sorry. You passed with {timer.round} rounds.", 300, 400)
+            p5.text("Looks like you don't know your fingers very well...", 300, 420)
+        
+
     
 
 

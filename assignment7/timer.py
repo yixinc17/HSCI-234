@@ -1,3 +1,5 @@
+#Timer class:
+# timer count down with target updated
 import js
 p5 = js.window
 font_num = p5.loadFont('font/digital-7.ttf')
@@ -10,6 +12,7 @@ class Timer:
         self.targets = targets or []
         self.count = t
         self.timer =0
+        self.round =1
     def update(self):
         p5.textFont(font_num) 
         p5.fill(46)  
@@ -18,10 +21,14 @@ class Timer:
         if self.count<=0:
             self.count = self.t
             self.timer = p5.millis()
+            #every t sec, targets updated 
             for target in self.targets:
                 target.random(100, 500)
+            self.round +=1
         p5.text(self.count, self.x,self.y)
+    #to check if a round of timer is end
     def end(self):
         if self.count <=1:
             return True
+
         
