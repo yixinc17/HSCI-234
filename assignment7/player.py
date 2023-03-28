@@ -12,8 +12,8 @@ class Player:
         self.y=y 
         self.d = 0    
     def is_match(self,target):
-        self.d = p5.dist(self.x , target.x , self.y , target.y)
-        if d < 2:
+        self.d = p5.dist(self.x , self.y , target.x, target.y)
+        if self.d < 5:
             return True
         
 class Menu(Player):

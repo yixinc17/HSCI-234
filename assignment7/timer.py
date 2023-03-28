@@ -22,6 +22,6 @@ class Timer:
                 target.random(100, 500)
         p5.text(self.count, self.x,self.y)
     def end(self):
-        if self.count <=0:
+        if self.count <=1:
             return True
         
