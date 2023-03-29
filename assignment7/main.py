@@ -33,6 +33,7 @@ from player import *
 from timer import *
 from hand import *
 from target import *
+#from playsound import playsound
 import js
 p5 = js.window
 nail = ["#523818","#237bad"]
@@ -56,6 +57,10 @@ index_match = False
 cursor_list = []
 menu_list = []
 
+#audio
+click = 'sound/mouseclick.wav'
+release = 'sound/mouserelease.wav'
+key = 'sound/key.wav'
 
 # fonts
 font_key = p5.loadFont('font/Monofett-Regular.ttf')
@@ -73,8 +78,8 @@ l_ring_target=FingerTarget(p5.random(100,500),510,ring_l,ring_w)
 l_index_target=FingerTarget(p5.random(100,500),510,index_l,index_w)
 lhand = LeftHand(100,500)
 rhand = RightHand(500,500)
-timer = Timer(580,50,timer_limit,targets=[cursor_target, l_mid_target, l_ring_target, l_index_target])
 
+timer = Timer(580,50,timer_limit,targets=[cursor_target, l_mid_target, l_ring_target, l_index_target])
 
 
 
@@ -89,7 +94,7 @@ def draw():
     global cursor_match, mid_match, ring_match, index_match 
     
     p5.background(bg['r'], bg['g'], bg['b'])   
-
+    
     #intro   
     if program_state == 'INTRO':
         p5.textFont(font_key) 
@@ -227,7 +232,19 @@ def draw():
 
 
 def keyPressed(event):
-    pass
+    #playsound(key)
+    #a secret timer/difficulty adjust trick for programmer/me,'['to minus,']'to add, backspace to reset to 10
+    global timer_limit, timer
+    if p5.key == ']':
+        timer_limit += 1
+        timer = Timer(580,50,timer_limit,targets=[cursor_target, l_mid_target, l_ring_target, l_index_target]) 
+    elif p5.key == '[':
+        if(timer_limit > 1):
+            timer_limit -= 1
+            timer = Timer(580,50,timer_limit,targets=[cursor_target, l_mid_target, l_ring_target, l_index_target])
+    elif(p5.keyCode == p5.BACKSPACE):
+        timer_limit = 10
+        timer = Timer(580,50,timer_limit,targets=[cursor_target, l_mid_target, l_ring_target, l_index_target])
 
 def keyReleased(event):
     global program_state
@@ -241,6 +258,7 @@ def keyReleased(event):
     
 
 def mousePressed(event):
+    #playsound(click)
     global cursor_list, menu_list, cursor, cursor_target,win,timer, rhand
     global cursor_match
     cursor_match = False
@@ -262,6 +280,7 @@ def mousePressed(event):
     print(cursor_match)
 
 def mouseReleased(event):
+    #playsound(release)
     # when click mouse, related finger's nail will change color
     rhand.index.c=nail[0]
     rhand.mid.c=nail[0] 
