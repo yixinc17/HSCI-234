@@ -105,6 +105,7 @@
   <body>
     
     <py-config type="toml">
+
         [[fetch]]
         files = [
           "./main.py",
@@ -113,13 +114,14 @@
           "./hand.py",
           "./target.py"
           ]
-
+      
     </py-config>
   
     <py-script id="output">
       from pyodide.ffi import create_proxy
       from main import *
       from js import localStorage
+      
 
       
       def run(*args):

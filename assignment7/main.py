@@ -33,7 +33,7 @@ from player import *
 from timer import *
 from hand import *
 from target import *
-#from playsound import playsound
+# from playsound import playsound
 import js
 p5 = js.window
 nail = ["#523818","#237bad"]
