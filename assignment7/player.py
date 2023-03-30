@@ -1,7 +1,6 @@
 # Player class:
 # a parent class for all playerable elements: fingers and mouse-related(menu and cursor)
 # a shared function is is_match(target), to see if the player matches targets
-
 import js
 p5 = js.window
 # fonts
