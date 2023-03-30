@@ -89,9 +89,9 @@ def setup():
     p5.rectMode(p5.CENTER)
     p5.createCanvas(600, 600) 
     print('finished setup') 
-    click = p5.loadsound('sound/click.mp3')
-    release = p5.loadsound('sound/release.mp3') 
-    key = p5.loadsound('sound/key.wav')
+    click = p5.loadSound('sound/click.mp3')
+    release = p5.loadSound('sound/release.mp3') 
+    key = p5.loadSound('sound/key.wav')
    
 def draw():
     global win, program_state, cursor_list, menu_list, timer
