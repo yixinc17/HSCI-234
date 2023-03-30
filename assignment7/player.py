@@ -5,6 +5,7 @@ import js
 p5 = js.window
 # fonts
 font_key = p5.loadFont('font/Monofett-Regular.ttf')
+
 nail = ["#523818","#237bad"]
 cursor_c = ["#000000","#44ba00"]
 menu_img = p5.loadImage('image/rightclick.jpg')

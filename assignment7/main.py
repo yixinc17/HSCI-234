@@ -29,12 +29,13 @@
 #'ESC' to return home
 # 'SPACE' to start
 # Game rule: use 'AWSD' to control left hand, and mouse to control right hand. Every 5 second there will be a random cursor-target and three finger-targets. Try to match targets in 5 second and then you win.
+import js
+p5 = js.window
 from player import *
 from timer import *
 from hand import *
 from target import *
-import js
-p5 = js.window
+
 
 nail = ["#523818","#237bad"]
 cursor_c = ["#000000","#44ba00"]
@@ -88,8 +89,8 @@ def setup():
     p5.rectMode(p5.CENTER)
     p5.createCanvas(600, 600) 
     print('finished setup') 
-    click = p5.loadsound('sound/click.wmp3')
-    release = p5.loadsound('sound/release.wmp3') 
+    click = p5.loadsound('sound/click.mp3')
+    release = p5.loadsound('sound/release.mp3') 
     key = p5.loadsound('sound/key.wav')
    
 def draw():
