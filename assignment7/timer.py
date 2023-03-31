@@ -3,6 +3,8 @@
 import js
 p5 = js.window
 font_num = p5.loadFont('font/digital-7.ttf')
+
+
 # after game test, 5 sec is too difficult
 class Timer:
     def __init__(self, x=0, y=0, t=10, targets=None):
@@ -14,8 +16,9 @@ class Timer:
         self.timer =0
         self.round =1
     def update(self):
-        p5.textFont(font_num) 
-        p5.fill(46)  
+        r=p5.map(self.count,self.t,0,0,255)
+        p5.fill(r,76,21)
+        p5.textFont(font_num)       
         p5.textSize(40)
         self.count = self.t-int((p5.millis()-self.timer)/1000) 
         if self.count<=0:

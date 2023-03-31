@@ -59,9 +59,10 @@ cursor_list = []
 menu_list = []
 
 #audio
-click = None
-release = None
-key = None
+click_sound = None
+release_sound = None
+keydown_sound = None
+keyup_sound = None
 
 
 # fonts
@@ -86,16 +87,20 @@ timer = Timer(580,50,timer_limit,targets=[cursor_target, l_mid_target, l_ring_ta
 
 
 def setup():
+    global keydown_sound, keyup_sound, click_sound, release_sound
     p5.rectMode(p5.CENTER)
     p5.createCanvas(600, 600) 
     print('finished setup') 
-    click = p5.loadSound('sound/click.mp3')
-    release = p5.loadSound('sound/release.mp3') 
-    key = p5.loadSound('sound/key.wav')
+
+    keydown_sound = p5.loadSound('sound/keydown.mp3')
+    keyup_sound = p5.loadSound('sound/keyup.mp3')
+    click_sound = p5.loadSound('sound/click.mp3')
+    release_sound = p5.loadSound('sound/release.mp3')
    
 def draw():
     global win, program_state, cursor_list, menu_list, timer
     global cursor_match, mid_match, ring_match, index_match 
+    
     
     p5.background(bg['r'], bg['g'], bg['b'])   
     
@@ -152,7 +157,6 @@ def draw():
 
         #AWSD to move left fingers
         if p5.keyIsPressed==True:
-            key.play()
             if p5.key == "A" or p5.key =="a":
                 lhand.ring.x-=1
                 lhand.ring.press_key('A')
@@ -237,7 +241,8 @@ def draw():
 
 
 def keyPressed(event):
-    key.play()
+    global keydown_sound
+    keydown_sound.play()
     #a secret timer/difficulty adjust trick for programmer/me,'['to minus,']'to add, backspace to reset to 10
     global timer_limit, timer
     if p5.key == ']':
@@ -252,7 +257,9 @@ def keyPressed(event):
         timer = Timer(580,50,timer_limit,targets=[cursor_target, l_mid_target, l_ring_target, l_index_target])
 
 def keyReleased(event):
+    global keyup_sound
     global program_state
+    keyup_sound.play()
     if program_state == 'INTRO' and p5.key ==" ":
         program_state = 'PLAY'
         print('change program_state to ' + program_state)
@@ -263,11 +270,11 @@ def keyReleased(event):
     
 
 def mousePressed(event):
-    click.play()
+    
     global cursor_list, menu_list, cursor, cursor_target,win,timer, rhand
-    global cursor_match
+    global cursor_match, click_sound
     cursor_match = False
-
+    click_sound.play()
     if p5.mouseButton == p5.LEFT:
         rhand.index.c=nail[1]  #nail change color when click   
         new_cursor = Cursor(x=p5.mouseX,y=p5.mouseY)
@@ -285,7 +292,8 @@ def mousePressed(event):
     print(cursor_match)
 
 def mouseReleased(event):
-    release.play()
+    global release_sound
+    release_sound.play()
     # when click mouse, related finger's nail will change color
     rhand.index.c=nail[0]
     rhand.mid.c=nail[0] 
