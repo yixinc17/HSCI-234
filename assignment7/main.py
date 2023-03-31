@@ -29,6 +29,9 @@
     # timer color change
     # secret button for me to cheat on time
 
+    # player test feedback:
+        # instruction not readable: what is ASWD? what's the rules?
+        # difficult to match targets, especially ring and index fingers， change timer_limit to 15sec
 
 #instruction:
 #'ESC' to return home
@@ -43,7 +46,8 @@ from target import *
 
 font_c ={
     'title':'#ab4c15',
-    'text':'#c8c8c8' 
+    'text':'#c8c8c8' ,
+    'text1':'#523818'
          }
 nail = ["#523818","#237bad"]
 cursor_c = ["#000000","#44ba00"]
@@ -52,7 +56,7 @@ bg = {
     'g':156, 
     'b':150
 }
-timer_limit = 10
+timer_limit = 15
 
 # 3 main status of the game
 program_state = 'INTRO'
@@ -81,6 +85,12 @@ font_num = p5.loadFont('font/digital-7.ttf')
 intro_lhand = LeftHand(200,400)
 intro_rhand = RightHand(400,400)
 intro_cursor=Cursor(400,180)
+
+intro_lhand.index.c = nail[1] 
+intro_lhand.mid.c = nail[1] 
+intro_lhand.ring.c = nail[1] 
+intro_rhand.index.c = nail[1] 
+intro_rhand.mid.c = nail[1] 
 #play elements
 cursor = Cursor(0,0)
 cursor_target = CursorTarget(p5.random(100,500),p5.random(100,500))
@@ -115,29 +125,38 @@ def draw():
     #intro   
     if program_state == 'INTRO':
         p5.textFont(font_key) 
-        p5.fill(font_c['title'])  
+        p5.fill(font_c['text1']) 
         p5.textAlign(p5.CENTER)
+        p5.textSize(30)
+        p5.text('Every finger has its own job', 300, 80)
         p5.textSize(50)
+        p5.fill(font_c['title']) 
         p5.text('Mind Your Own Business', 300, 150)
         intro_lhand.draw()
         intro_rhand.draw()
         intro_cursor.draw()
-        p5.textSize(30)
-        p5.fill(font_c['text'])
-        p5.text('Click SPACE to start', 300, 520)
-        p5.text('Click ESC to return home', 300, 550)
-        p5.fill(font_c['text'])
         p5.textAlign(p5.LEFT)
+        p5.fill(font_c['text1'])
         p5.textSize(20)
-        p5.text('Press', 80, 300)
-        p5.text('A W S D', 80, 320)
-        p5.text('to move', 80, 340)
-        p5.text('left hand', 80, 360)
+        p5.text('Press', 80, 285)
+        p5.textSize(30)
+        p5.text('A W S D', 80, 310)
+        p5.textSize(20)
+        p5.text('to move', 80, 330)
+        p5.text('left hand', 80, 350)
         p5.textAlign(p5.RIGHT)
         p5.text('Move and click', 520, 220)
         p5.text('mouse', 520, 240)
         p5.text('to move and confirm', 520, 260)
         p5.text('the cursor', 520, 280)
+        p5.textAlign(p5.CENTER)
+        p5.textSize(20)
+        p5.text('Try to move to targets in time!', 300, 490)
+        p5.textSize(30)
+        p5.fill(font_c['text'])
+        p5.text('Click SPACE to start', 300, 520)
+        p5.text('Click ESC to return home', 300, 550)
+        
 
     # play
     elif program_state =='PLAY':
@@ -226,20 +245,20 @@ def draw():
     # end
     elif program_state =='END': 
         p5.textAlign(p5.CENTER)
-        p5.textSize(50) 
+        p5.textSize(200) 
         p5.fill(font_c['title'])
         p5.text('WIN!!!', 300, 300)
-        p5.textSize(20)
-        p5.fill(font_c['text'])
+        p5.textSize(30)
+        p5.fill(font_c['text1'])
         if timer.round <3:
             p5.text(f"Bravo! You passed with only {timer.round} round.", 300, 400)
-            p5.text("You must be the master of your fingers!", 300, 420)
+            p5.text("You must be the master of your fingers!", 300, 430)
         elif timer.round>=3 and timer.round < 6:
             p5.text(f"You passed with {timer.round} rounds.", 300, 400)
-            p5.text("Try to be friend with your fingers.", 300, 420)
+            p5.text("Try to be friend with your fingers.", 300, 430)
         elif timer.round>=6:
             p5.text(f"I'm so sorry. You passed with {timer.round} rounds.", 300, 400)
-            p5.text("Looks like you don't know your fingers very well...", 300, 420)
+            p5.text("Looks like you don't know your fingers very well...", 300, 430)
         
 
     
