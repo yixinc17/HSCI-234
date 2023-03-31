@@ -9,7 +9,10 @@ font_key = p5.loadFont('font/Monofett-Regular.ttf')
 nail = ["#523818","#237bad"]
 cursor_c = ["#000000","#44ba00"]
 menu_img = p5.loadImage('image/rightclick.jpg')
-
+font_c ={
+    'title':'#ab4c15',
+    'text':'#c8c8c8' 
+         }
 class Player:
     def __init__(self,x=0,y=0):
         self.x=x
@@ -17,7 +20,7 @@ class Player:
         self.d = 0    
     def is_match(self,target):
         self.d = p5.dist(self.x , self.y , target.x, target.y)
-        if self.d < 3:
+        if self.d < 5:
             return True
 #right click mouse: menu    
 class Menu(Player):
@@ -79,7 +82,7 @@ class Finger(Player):
     def press_key(self,key):
         p5.textAlign(p5.CENTER)
         p5.textFont(font_key) 
-        p5.fill(171, 76, 21)  
+        p5.fill(font_c['title'])  
         p5.textSize(40)
         p5.text(key, self.x, self.y-self.l/2)
 

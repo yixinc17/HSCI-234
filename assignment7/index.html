@@ -54,6 +54,7 @@
         top: calc(100% - 100px);
         width: calc(60%);
         height: 100px;
+        height: 0px;
         overflow-y: auto;
         scroll-behavior: auto;
         background: black;
@@ -153,7 +154,9 @@
       run()
     </py-script>
 
-    <py-repl id="code"></py-repl>
+    <!-- the code area -->
+
+    <!-- <py-repl id="code"></py-repl> -->
     
     <script>
       function setup() {}
@@ -168,7 +171,7 @@
 
     <div class="refresh-btn">
       <button id="reload-sketch" py-click="reload_sketch()">Refresh Canvas</button>
-    </div>
+    </div> 
     <div class="save-btn">
       <button id="save-code" py-click="save_code()">Save to Memory</button>
     </div>
