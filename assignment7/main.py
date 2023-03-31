@@ -248,7 +248,7 @@ def draw():
         p5.textSize(200) 
         p5.fill(font_c['title'])
         p5.text('WIN!!!', 300, 300)
-        p5.textSize(30)
+        p5.textSize(25)
         p5.fill(font_c['text1'])
         if timer.round <3:
             p5.text(f"Bravo! You passed with only {timer.round} round.", 300, 400)

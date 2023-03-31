@@ -102,6 +102,30 @@
         width: calc(100% - 20px);
         z-index: 2
       }
+      .text0 {
+        position: absolute;
+        top: 0%;
+        left: 1%;
+        color:#d3d0bc;
+        text-align:left;
+        letter-spacing:-2px;
+        word-spacing:-5px;
+        line-height: 0%;
+        font-family:courier;
+        font-size:25px;
+      }
+      .text1 {
+        position: absolute;
+        top: 0%;
+        right: 1%;
+        color:#d3d0bc;
+        text-align:right;
+        letter-spacing:-2px;
+        word-spacing:-5px;
+        line-height: 0%;
+        font-family:courier;
+        font-size:25px;
+      }
       </style>
   </head>
   <body>
@@ -169,6 +193,20 @@
       // }
       client.send();
     </script>
+    
+    <div class = "text0"> 
+      <p>Put your left ring finger on <mark>A</mark></p>
+      <p>Put your left middle finger on <mark>W</mark> and <mark>S</mark></p>
+      <p>Put your left index finger on <mark>D</mark></p>
+      <p>Press <mark>D</mark> to move left hand fingers</p>
+      <p>to match the finger targets</p>
+    </div>
+    <div class = "text1"> 
+      <p>Put your right ring finger on mouse<mark>left</mark>button</p>
+      <p>Put your right middle finger on mouse<mark>right</mark>button</p>
+      <p>Move and click on each button</p>
+      <p>to match the cursor target</p>
+    </div>
 <!-- 
     <div class="refresh-btn">
       <button id="reload-sketch" py-click="reload_sketch()">Refresh Canvas</button>
@@ -179,6 +217,6 @@
     <div class="load-btn">
       <button id="load-code" py-click="load_code()">Load from Memory</button>
     </div>
-     -->
+-->
   </body>
 </html>
