@@ -13,7 +13,7 @@
     </script>
     <style>
       body {
-        background-color: #efefef;
+        background-color: #39332b;
         /*background-color: #aaaaaa;*/
       }
       
@@ -73,9 +73,9 @@
       .p5Canvas
       {
         position: absolute;
-        left: 10px;
-        top: 40px;
-        float: left;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
       }
       .refresh-btn
       {
@@ -163,12 +163,13 @@
       code = document.getElementById("code")
       var client = new XMLHttpRequest();
       client.open('GET', './main.py');
-      client.onreadystatechange = function() {
-        code.innerHTML = client.responseText;
-      }
+      //hide code area
+      // client.onreadystatechange = function() {
+      //   code.innerHTML = client.responseText;
+      // }
       client.send();
     </script>
-
+<!-- 
     <div class="refresh-btn">
       <button id="reload-sketch" py-click="reload_sketch()">Refresh Canvas</button>
     </div> 
@@ -178,6 +179,6 @@
     <div class="load-btn">
       <button id="load-code" py-click="load_code()">Load from Memory</button>
     </div>
-    
+     -->
   </body>
 </html>
