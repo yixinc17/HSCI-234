@@ -22,7 +22,12 @@
     # first game test: 5 sec count down and specific position match is so difficult, so the timer will adjust to longer time, and instead of matching positions, use distance range.
     #  if cursor matches the target, it will turn green, but if others dont match their targets in 10 sec, the cursor will reset to black
     # oh noooo 10sec is so hard too!!! timer = 20s, margins of error(d to target) < 5
-
+    # update ending context related to play rounds
+    # upadate sound by import p5.sound lib in imdex.html:<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js"></script>
+    # mouse and key sounds
+    # create a dictionary for font color set
+    # timer color change
+    # secret button for me to cheat on time
 
 
 #instruction:
@@ -36,7 +41,10 @@ from timer import *
 from hand import *
 from target import *
 
-
+font_c ={
+    'title':'#ab4c15',
+    'text':'#c8c8c8' 
+         }
 nail = ["#523818","#237bad"]
 cursor_c = ["#000000","#44ba00"]
 bg = {
@@ -107,7 +115,7 @@ def draw():
     #intro   
     if program_state == 'INTRO':
         p5.textFont(font_key) 
-        p5.fill(171, 76, 21)  
+        p5.fill(font_c['title'])  
         p5.textAlign(p5.CENTER)
         p5.textSize(50)
         p5.text('Mind Your Own Business', 300, 150)
@@ -115,10 +123,10 @@ def draw():
         intro_rhand.draw()
         intro_cursor.draw()
         p5.textSize(30)
-        p5.fill(200)
+        p5.fill(font_c['text'])
         p5.text('Click SPACE to start', 300, 520)
         p5.text('Click ESC to return home', 300, 550)
-        p5.fill(200)
+        p5.fill(font_c['text'])
         p5.textAlign(p5.LEFT)
         p5.textSize(20)
         p5.text('Press', 80, 300)
@@ -219,8 +227,10 @@ def draw():
     elif program_state =='END': 
         p5.textAlign(p5.CENTER)
         p5.textSize(50) 
+        p5.fill(font_c['title'])
         p5.text('WIN!!!', 300, 300)
         p5.textSize(20)
+        p5.fill(font_c['text'])
         if timer.round <3:
             p5.text(f"Bravo! You passed with only {timer.round} round.", 300, 400)
             p5.text("You must be the master of your fingers!", 300, 420)
