@@ -124,6 +124,7 @@ def draw():
     
     #intro   
     if program_state == 'INTRO':
+        timer.round = 1
         p5.textFont(font_key) 
         p5.fill(font_c['text1']) 
         p5.textAlign(p5.CENTER)
@@ -202,8 +203,8 @@ def draw():
             if p5.key == "S" or p5.key =="s":
                 lhand.mid.y+=1
                 lhand.mid.press_key('S')
-                if lhand.mid.y>=p5.height+lhand.mid.y/2:
-                    lhand.mid.y= -lhand.mid.w/2
+                if lhand.mid.y>=p5.height+lhand.mid.l/2:
+                    lhand.mid.y= -lhand.mid.l/2
         
         # if fingers matches targets, their nails will change color
         if lhand.ring.is_match(l_ring_target):
@@ -259,6 +260,7 @@ def draw():
         elif timer.round>=6:
             p5.text(f"I'm so sorry. You passed with {timer.round} rounds.", 300, 400)
             p5.text("Looks like you don't know your fingers very well...", 300, 430)
+        
         
 
     
