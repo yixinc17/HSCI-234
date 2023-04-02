@@ -102,7 +102,7 @@
         width: calc(100% - 20px);
         z-index: 2
       }
-      .text0 {
+      .text_l1 {
         position: absolute;
         top: 0%;
         left: 1%;
@@ -114,7 +114,19 @@
         font-family:courier;
         font-size:20px;
       }
-      .text1 {
+      .text_l2 {
+        position: absolute;
+        bottom: 10%;
+        left: 1%;
+        color:#d3d0bc;
+        text-align:left;
+        letter-spacing:-2px;
+        word-spacing:-5px;
+        line-height: 30%;
+        font-family:courier;
+        font-size:20px;
+      }
+      .text_r1 {
         position: absolute;
         top: 0%;
         right: 1%;
@@ -125,6 +137,18 @@
         line-height: 30%;
         font-family:courier;
         font-size:20px;
+      }
+      .text_r2 {
+        position: absolute;
+        bottom: 1%;
+        right: 1%;
+        color:#3f6e9c;
+        text-align:right;
+        letter-spacing:0px;
+        word-spacing:0px;
+        line-height: 30%;
+        font-family:courier;
+        font-size:15px;
       }
       </style>
   </head>
@@ -194,14 +218,20 @@
       client.send();
     </script>
     
-    <div class = "text0"> 
+    <div class = "text_l1"> 
       <p>Put your left ring finger on <mark>A</mark></p>
       <p>Put your left middle finger on <mark>W</mark> and <mark>S</mark></p>
       <p>Put your left index finger on <mark>D</mark></p>
       <p>Press <mark>D</mark> to move left hand fingers</p>
       <p>to match the finger targets</p>
     </div>
-    <div class = "text1"> 
+    
+    <div class = "text_l2"> 
+      <p>Press <mark>SPACE</mark> to start game</p>
+      <p>Press <mark>ESC</mark> to return home</p>
+      
+    </div>
+    <div class = "text_r1"> 
       <p>Put your right ring finger</p>
       <p>on mouse<mark>left</mark>button</p>
       <p>Put your right middle finger</p>
@@ -221,6 +251,7 @@
       <p>Try to match all 4 targets in time</p>
       <p>Regardless of the order</p>
     </div>
+    <div class = "text_r2">Designed by Yixin Chen</div>
 <!-- 
     <div class="refresh-btn">
       <button id="reload-sketch" py-click="reload_sketch()">Refresh Canvas</button>
