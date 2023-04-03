@@ -16,7 +16,7 @@
             # maybe use list to store wrong mouseclick position 
 
 
-#week3: Child Class; Game test; win state
+#week3: Child Class; Game test; win state; player tests
     # Class optimized with Child Class, and independent py files.
     # all function done without win state(including random targets every 5 sec, move fingers, mouse click to instantiate menu and cursor) 
     # first game test: 5 sec count down and specific position match is so difficult, so the timer will adjust to longer time, and instead of matching positions, use distance range.
@@ -32,6 +32,8 @@
     # player test feedback:
         # instruction not readable: what is ASWD? what's the rules?
         # difficult to match targets, especially ring and index fingers， change timer_limit to 15sec
+
+#week4: documentation and user experience check
 
 #instruction:
 #'ESC' to return home
@@ -288,7 +290,7 @@ def keyPressed(event):
         timer = Timer(580,50,timer_limit,targets=[cursor_target, l_mid_target, l_ring_target, l_index_target])
 
 def keyReleased(event):
-    global keyup_sound
+    global keyup_sound, timer
     global program_state
     keyup_sound.play()
     if program_state == 'INTRO' and p5.key ==" ":
@@ -296,6 +298,7 @@ def keyReleased(event):
         print('change program_state to ' + program_state)
     elif (program_state == 'PLAY' or program_state == 'END') and p5.keyCode == p5.ESCAPE:
         program_state = 'INTRO'
+        timer.round = 1
         print('change program_state to ' + program_state)
 
     
