@@ -8,7 +8,6 @@ font_key = p5.loadFont('font/Monofett-Regular.ttf')
 
 nail = ["#523818","#237bad"]
 cursor_c = ["#000000","#44ba00"]
-menu_img = p5.loadImage('image/rightclick.jpg')
 font_c ={
     'title':'#ab4c15',
     'text':'#c8c8c8' 
@@ -24,9 +23,13 @@ class Player:
             return True
 #right click mouse: menu    
 class Menu(Player):
+    def __init__(self,x=0,y=0):
+        self.x=x
+        self.y=y 
+        self.img = p5.loadImage('image/rightclick.jpg')   
     def draw(self):
         p5.imageMode(p5.CORNER)
-        p5.image(menu_img,self.x,self.y)
+        p5.image(self.img,self.x,self.y)
 
 class Cursor(Player):
     def __init__(self,x=0,y=0):
@@ -86,3 +89,6 @@ class Finger(Player):
         p5.textSize(40)
         p5.text(key, self.x, self.y-self.l/2)
 
+    def move(self, distance_x, distance_y):
+        self.x += distance_x
+        self.y += distance_y

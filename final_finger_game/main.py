@@ -179,11 +179,7 @@ def draw():
             wrong_cursor = cursor_list[j]
             wrong_cursor.draw()
         
-        # if cursor matches the target, it will change to green
-        if cursor_match:
-            cursor.c = cursor_c[1]
-        else:
-            cursor.c = cursor_c[0]    
+   
 
         #AWSD to move left fingers
         if p5.keyIsPressed==True:
@@ -228,6 +224,11 @@ def draw():
             index_match = False
             lhand.index.c = nail[0]
 
+        # if cursor matches the target, it will change to green
+        if cursor_match:
+            cursor.c = cursor_c[1]
+        else:
+            cursor.c = cursor_c[0] 
 
 
         lhand.draw()
